@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1b">
+<meta name="description" content="نمونه‌کارها و خدمات برنامه‌نویسی ایلیا سلطانی | IliyaCode">
+<title>IliyaCode</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#080d1b;--panel:#101a2d;--panel2:#121f36;--text:#f3f7ff;--muted:#a5b2ca;--blue:#5a8cff;--cyan:#54e4d2;--line:rgba(255,255,255,.1);--glass:rgba(12,20,37,.74)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at 15% 0%,rgba(47,91,183,.22),transparent 35%),radial-gradient(ellipse at 90% 35%,rgba(28,169,158,.12),transparent 30%),var(--bg);color:var(--text);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.9;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+button,a,.project-card{ -webkit-tap-highlight-color:transparent}
+.container{width:min(1120px,calc(100% - 36px));margin:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px}
+.logo-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#07111f;font-size:20px;box-shadow:0 8px 28px #5a8cff35}
+.logo small{display:block;color:var(--muted);font-size:11px;font-weight:500;line-height:1.4;letter-spacing:0}
+.top-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:14px;padding:11px 17px;background:rgba(255,255,255,.04);color:var(--text);font-weight:700;cursor:pointer;transition:.2s}
+.top-cta:hover,.btn:hover{transform:translateY(-2px);border-color:#5a8cff88}
+.btn-primary{background:linear-gradient(110deg,var(--blue),#6eacff);border-color:transparent;color:#061124;box-shadow:0 10px 30px #5a8cff2a}
+.btn-secondary{background:rgba(255,255,255,.035)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center;padding:52px 0 72px;min-height:490px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid #54e4d233;background:#54e4d20d;color:var(--cyan);font-size:13px;font-weight:700}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+h1{font-size:clamp(34px,5.2vw,60px);line-height:1.3;margin:18px 0 14px;font-weight:900;letter-spacing:-1px}
+.gradient-text{background:linear-gradient(100deg,#7da7ff 10%,#54e4d2 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:16px;max-width:610px;margin:0 0 25px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:26px;margin-top:32px;flex-wrap:wrap}
+.stat strong{display:block;font-size:22px}
+.stat span{font-size:12px;color:var(--muted)}
+.hero-art{position:relative;min-height:340px;display:grid;place-items:center}
+.orbit{position:absolute;width:310px;height:310px;border-radius:50%;border:1px solid #6b9aff25;box-shadow:0 0 70px #5a8cff10 inset}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #54e4d222;border-radius:50%;inset:28px}
+.orbit:after{inset:58px;border-color:#6b9aff22}
+.code-window{position:relative;width:min(100%,350px);border:1px solid #ffffff20;border-radius:22px;overflow:hidden;background:linear-gradient(145deg,#162440eF,#0c1425f5);box-shadow:0 30px 90px #0007;transform:rotate(-2deg)}
+.window-head{display:flex;align-items:center;gap:6px;padding:13px 16px;border-bottom:1px solid var(--line);color:#9aabc6;font-size:12px}
+.wdot{width:8px;height:8px;border-radius:50%;background:#ff647c}.wdot:nth-child(2){background:#ffce68}.wdot:nth-child(3){background:#54e4d2}
+.code{direction:ltr;text-align:left;padding:20px 22px;font-family:ui-monospace,Consolas,monospace;font-size:13px;line-height:2.1;color:#dce8ff}
+.code .purple{color:#c69bff}.code .cyan{color:#66e7d6}.code .blue{color:#85aaff}.code .yellow{color:#ffd479}.code .muted{color:#7e90b1}
+.float-chip{position:absolute;display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid #ffffff18;border-radius:14px;background:#111c30d9;backdrop-filter:blur(14px);box-shadow:0 14px 35px #0004;font-size:12px;font-weight:700}
+.float-chip b{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:#5a8cff20;color:#8db1ff;font-size:14px}
+.chip-one{top:25px;right:0}.chip-two{bottom:28px;left:0}.chip-three{bottom:2px;right:32px}
+section{padding:52px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:25px}
+.kicker{font-size:12px;color:var(--cyan);font-weight:800;letter-spacing:.5px}
+h2{font-size:clamp(25px,3vw,36px);margin:3px 0 0;line-height:1.5}
+.section-desc{color:var(--muted);font-size:14px;max-width:540px;margin:8px 0 0}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.skill{padding:22px;border:1px solid var(--line);background:linear-gradient(145deg,#121d32b8,#0e1729b8);border-radius:20px;transition:.2s}
+.skill:hover,.project-card:hover{transform:translateY(-4px);border-color:#6d9cff66}
+.skill-top{display:flex;align-items:center;gap:13px}
+.skill-icon{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-weight:900;font-size:17px;background:#5a8cff1b;color:#8eb0ff}
+.skill:nth-child(2) .skill-icon{background:#ffb74a19;color:#ffc76d}
+.skill:nth-child(3) .skill-icon{background:#54e4d21a;color:#67e6d7}
+.skill h3{margin:0;font-size:17px}.skill p{margin:13px 0 0;color:var(--muted);font-size:13px}
+.tag{display:inline-block;margin-top:13px;padding:4px 9px;border-radius:8px;background:#ffffff08;color:#9eafd0;font-size:11px}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.projects-empty{grid-column:1/-1;text-align:center;padding:42px 22px;border:1px dashed #ffffff2b;border-radius:20px;background:linear-gradient(145deg,#121d32a8,#0d1526a8)}
+.projects-empty .empty-icon{display:grid;place-items:center;width:58px;height:58px;margin:0 auto 12px;border-radius:18px;background:#5a8cff1b;color:#8eb0ff;font-size:27px}
+.projects-empty h3{margin:0 0 8px;font-size:17px}
+.projects-empty p{margin:0;color:var(--muted);font-size:13px}
+.project-status{display:inline-block;margin-top:12px;padding:4px 9px;border-radius:8px;background:#54e4d21a;color:#67e6d7;font-size:11px}
+.project-card{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:linear-gradient(155deg,#121d32,#0d1526);transition:.25s}
+.project-visual{height:170px;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,#1d3261,#13213a)}
+.project-visual:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid #ffffff1a;box-shadow:0 0 0 25px #ffffff08,0 0 0 55px #ffffff05}
+.project-visual .visual-icon{position:relative;display:grid;place-items:center;width:74px;height:74px;border-radius:23px;border:1px solid #ffffff2b;background:#ffffff15;backdrop-filter:blur(8px);font-size:32px;box-shadow:0 15px 40px #0003}
+.project-card:nth-child(2) .project-visual{background:linear-gradient(135deg,#174b4a,#14283d)}
+.project-card:nth-child(3) .project-visual{background:linear-gradient(135deg,#3a245d,#1a2140)}
+.project-card:nth-child(4) .project-visual{background:linear-gradient(135deg,#57351f,#1d263a)}
+.project-card:nth-child(5) .project-visual{background:linear-gradient(135deg,#1b4264,#17243c)}
+.project-card:nth-child(6) .project-visual{background:linear-gradient(135deg,#4a2741,#1c203b)}
+.project-label{position:absolute;top:13px;right:13px;font-size:10px;border-radius:8px;padding:4px 8px;background:#080d1bcc;border:1px solid #ffffff20;color:#dbe6ff}
+.project-body{padding:18px}
+.project-body h3{font-size:16px;margin:0 0 7px}
+.project-body p{color:var(--muted);font-size:12px;margin:0;min-height:48px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.tags span{font-size:10px;color:#9fb7e6;background:#5a8cff15;border:1px solid #5a8cff24;padding:3px 8px;border-radius:7px}
+.project-note{margin-top:18px;color:#8e9eb9;font-size:12px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.service{padding:23px;border-radius:19px;border:1px solid var(--line);background:#101a2bbf}
+.service-icon{font-size:25px}.service h3{margin:10px 0 6px;font-size:16px}.service p{color:var(--muted);font-size:13px;margin:0}
+.about-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px}
+.about-card,.contact-card{border:1px solid var(--line);border-radius:22px;padding:25px;background:linear-gradient(140deg,#121e33,#0d1525)}
+.about-avatar{width:68px;height:68px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#07111f;font-size:25px;font-weight:900;margin-bottom:16px}
+.about-card h3{margin:0;font-size:20px}.about-card p,.about-copy p{font-size:13px;color:var(--muted)}
+.about-copy{padding:8px 5px}.about-copy h3{margin:0;font-size:21px}.check-list{padding:0;list-style:none;display:grid;gap:9px;color:#d4def0;font-size:13px}.check-list li:before{content:"✓";color:var(--cyan);font-weight:900;margin-left:9px}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-card h3{margin:0 0 8px;font-size:20px}.contact-card p{font-size:13px;color:var(--muted)}
+.contact-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.contact-item{display:flex;align-items:center;gap:11px;padding:12px;border:1px solid var(--line);border-radius:13px;margin-top:10px;background:#ffffff04}
+.contact-item .ci{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#54e4d219;color:var(--cyan)}
+.contact-item small{display:block;color:var(--muted);font-size:11px}.contact-item strong{font-size:13px}
+.form-grid{display:grid;gap:12px}
+label{display:block;font-size:12px;color:#b8c5dc;margin-bottom:5px}
+input,textarea,select{width:100%;border:1px solid #ffffff19;background:#080f1f;color:var(--text);border-radius:12px;padding:12px 13px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:#5a8cffaa;box-shadow:0 0 0 3px #5a8cff18}
+textarea{resize:vertical;min-height:90px}
+.form-hint{font-size:11px;color:#8394b1;margin:0}
+footer{padding:28px 0 112px;border-top:1px solid var(--line);color:#8494af;font-size:12px;margin-top:25px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.bottom-nav{position:fixed;z-index:50;bottom:14px;left:50%;transform:translateX(-50%);width:min(640px,calc(100% - 22px));padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:5px;border:1px solid #ffffff1c;border-radius:21px;background:rgba(9,15,28,.82);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 18px 60px #0008,0 1px 0 #ffffff0a inset}
+.nav-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:55px;border-radius:14px;color:#94a4bf;font-size:10px;font-weight:700;transition:.2s}
+.nav-link .nav-icon{font-size:19px;line-height:1.4}
+.nav-link:hover,.nav-link.active{color:#dceaff;background:linear-gradient(135deg,#5a8cff27,#54e4d211)}
+.nav-link.active{box-shadow:inset 0 0 0 1px #7ba2ff2a}
+.modal-backdrop{position:fixed;inset:0;background:#020611bd;backdrop-filter:blur(7px);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}
+.modal-backdrop.open{display:flex}
+.modal{width:min(500px,100%);max-height:90vh;overflow:auto;border:1px solid #ffffff20;border-radius:22px;padding:23px;background:#101a2d;box-shadow:0 30px 90px #0009}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.modal-head h3{margin:0}.close-btn{width:35px;height:35px;border-radius:10px;border:1px solid var(--line);background:#ffffff08;color:white;cursor:pointer}
+.modal p{font-size:12px;color:var(--muted)}
+.toast{position:fixed;top:18px;left:50%;transform:translate(-50%,-20px);opacity:0;pointer-events:none;z-index:200;background:#12223b;border:1px solid #ffffff22;color:#eef5ff;padding:11px 16px;border-radius:13px;font-size:13px;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){.hero{grid-template-columns:1fr;gap:8px;padding-top:35px}.hero-art{min-height:310px;grid-row:1}.hero-copy{grid-row:2}.projects-grid{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:repeat(2,1fr)}.about-wrap{grid-template-columns:1fr 1.2fr}}
+@media(max-width:600px){.container{width:min(100% - 26px,520px)}.topbar{padding:14px 0}.top-cta{padding:9px 11px;font-size:12px}.hero{padding:22px 0 40px}.hero-art{min-height:270px}.orbit{width:250px;height:250px}.code-window{width:min(310px,92%)}.code{font-size:11px;padding:14px 16px}.chip-one{right:-3px;top:13px}.chip-two{left:-2px;bottom:15px}.chip-three{right:10px;bottom:-1px}.hero p{font-size:14px}.hero-stats{gap:18px}.stat strong{font-size:19px}section{padding:37px 0}.section-head{align-items:start;flex-direction:column;gap:5px}.skills-grid{grid-template-columns:1fr}.skill{padding:17px}.projects-grid{grid-template-columns:1fr}.project-visual{height:155px}.project-body p{min-height:0}.services-grid{grid-template-columns:1fr}.about-wrap,.contact-wrap{grid-template-columns:1fr}.about-card,.contact-card{padding:19px}.bottom-nav{bottom:8px;width:calc(100% - 16px);padding:6px;border-radius:18px}.nav-link{min-height:50px;font-size:9px}.nav-link .nav-icon{font-size:17px}footer{padding-bottom:95px}.footer-inner{justify-content:center;text-align:center}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+html.light-theme{--bg:#f4f7fc;--panel:#ffffff;--panel2:#eaf0fa;--text:#17233a;--muted:#53627a;--line:rgba(20,35,60,.14);--glass:rgba(255,255,255,.88)}
+html.light-theme body{background:radial-gradient(ellipse at 15% 0%,rgba(47,91,183,.10),transparent 35%),radial-gradient(ellipse at 90% 35%,rgba(28,169,158,.08),transparent 30%),var(--bg);color:var(--text)}
+html.light-theme .skill,html.light-theme .project-card,html.light-theme .contact-card,html.light-theme .about-card,html.light-theme .about-copy{background:#fff;color:var(--text);border-color:var(--line)}
+html.light-theme input,html.light-theme textarea,html.light-theme select{background:#fff;color:var(--text);border-color:var(--line)}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="topbar">
+  <a class="logo" href="#home" aria-label="IliyaCode صفحه اصلی">
+    <span class="logo-mark">I</span>
+    <span>IliyaCode</span>
+  </a>
+  <a class="top-cta" href="#signup" id="registerCta">ثبت نام <span>↗</span></a>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <span class="eyebrow"><span class="dot"></span> برنامه‌نویس در حال رشد</span>
+    <h1>ایده‌هات رو به<br><span class="gradient-text">دنیای دیجیتال</span> تبدیل کنیم.</h1>
+    <p>من ایلیا سلطانی هستم؛ به ساخت تجربه‌های دیجیتال علاقه دارم و با Python، HTML و CSS پروژه‌های کاربردی و خلاقانه می‌سازم. اینجا می‌تونی با مهارت‌ها و نمونه‌کارهای من آشنا بشی.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">دیدن نمونه‌کارها <span>←</span></a>
+      <button class="btn btn-secondary" type="button" data-open-project>ثبت درخواست پروژه <span>＋</span></button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>03</strong><span>مهارت اصلی</span></div>
+      <div class="stat"><strong>06</strong><span>ایده نمونه‌کار</span></div>
+      <div class="stat"><strong>24/7</strong><span>ثبت درخواست آنلاین</span></div>
+    </div>
+  </div>
+  <div class="hero-art" aria-label="تصویر گرافیکی کدنویسی">
+    <div class="orbit"></div>
+    <div class="code-window">
+      <div class="window-head"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span><span style="margin-right:auto">hello_world.py</span></div>
+      <div class="code">
+        <div><span class="purple">class</span> <span class="yellow">Developer</span>:</div>
+        <div>&nbsp;&nbsp;<span class="blue">name</span> = <span class="cyan">"Iliya Soltani"</span></div>
+        <div>&nbsp;&nbsp;<span class="blue">skills</span> = [</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cyan">"Python"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cyan">"HTML"</span>, <span class="cyan">"CSS"</span></div>
+        <div>&nbsp;&nbsp;]</div>
+        <div class="muted">&nbsp;</div>
+        <div><span class="purple">def</span> <span class="yellow">build_ideas</span>():</div>
+        <div>&nbsp;&nbsp;<span class="purple">return</span> <span class="cyan">"Let's create!"</span></div>
+        <div class="muted"># turning ideas into projects</div>
+      </div>
+    </div>
+    <div class="float-chip chip-one"><b>Py</b><span>Python Developer</span></div>
+    <div class="float-chip chip-two"><b>⌘</b><span>Creative Coding</span></div>
+    <div class="float-chip chip-three"><b>✦</b><span>Learning by building</span></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head"><div><div class="kicker">MY TOOLKIT / مهارت‌ها</div><h2>ابزارهایی که باهاشون می‌سازم</h2></div><p class="section-desc">سه مهارت اصلی من برای شروع ساخت وب‌سایت‌ها و برنامه‌های کاربردی.</p></div>
+  <div class="skills-grid">
+    <article class="skill"><div class="skill-top"><div class="skill-icon">Py</div><div><h3>Python</h3><span class="tag">برنامه‌نویسی</span></div></div><p>ساخت اسکریپت‌ها، ابزارهای کوچک و تمرین‌های برنامه‌نویسی با تمرکز روی حل مسئله.</p></article>
+    <article class="skill"><div class="skill-top"><div class="skill-icon">5</div><div><h3>HTML</h3><span class="tag">ساختار وب</span></div></div><p>ساختاردهی مرتب و استاندارد صفحات وب برای نمایش محتوا به شکل واضح و قابل‌دسترسی.</p></article>
+    <article class="skill"><div class="skill-top"><div class="skill-icon">#</div><div><h3>CSS</h3><span class="tag">طراحی رابط</span></div></div><p>طراحی ظاهر صفحات، رنگ‌بندی، چیدمان واکنش‌گرا و تجربه بهتر در موبایل و دسکتاپ.</p></article>
+  </div>
+</section>
+
+<section id="projects" hidden>
+  <div class="section-head"><div><div class="kicker">MY PROJECTS / پروژه‌های من</div><h2>درخواست‌ها و پروژه‌های من</h2></div><p class="section-desc">همه درخواست‌های ثبت‌شده در این بخش نمایش داده می‌شوند و می‌توانی وضعیت هر پروژه را پیگیری کنی.</p></div>
+  <div id="customerProjectsList" class="projects-grid" aria-live="polite">
+    <div class="projects-empty"><span class="empty-icon">▦</span><h3>شما در حال حاضر هیچ پروژه فعال ندارید</h3><p>وقتی پروژه‌ای توسط مدیر تأیید شود، در این بخش نمایش داده خواهد شد.</p></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-head"><div><div class="kicker">WHAT I CAN HELP WITH / خدمات</div><h2>چه کاری می‌تونیم انجام بدیم؟</h2></div></div>
+  <div class="services-grid">
+    <article class="service"><div class="service-icon">🌐</div><h3>صفحه وب ساده</h3><p>طراحی صفحه معرفی، شخصی یا معرفی خدمات با چیدمان مرتب و سازگار با موبایل.</p></article>
+    <article class="service"><div class="service-icon">🐍</div><h3>اسکریپت Python</h3><p>ساخت ابزارهای ساده و اسکریپت‌های کوچک برای تمرین یا خودکارسازی کارها.</p></article>
+    <article class="service"><div class="service-icon">🎨</div><h3>بهبود ظاهر سایت</h3><p>مرتب‌سازی بخش‌ها، رنگ‌ها و چیدمان ظاهری صفحات HTML و CSS.</p></article>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head"><div><div class="kicker">A LITTLE ABOUT ME / درباره من</div><h2>کنجکاو، خلاق و همیشه در حال یادگیری</h2></div></div>
+  <div class="about-wrap">
+    <div class="about-card"><div class="about-avatar">IS</div><h3>ایلیا سلطانی</h3><p>علاقه‌مند به برنامه‌نویسی و ساخت پروژه‌های دیجیتال.</p><a class="btn btn-secondary" href="https://t.me/Mr_Iliya_Solo" target="_blank" rel="noopener">گفت‌وگو در تلگرام ↗</a></div>
+    <div class="about-copy"><h3>از یک ایده تا یک تجربه واقعی</h3><p>هدفم اینه که با تمرین و ساخت پروژه‌های جدید، مهارت‌هام رو بهتر کنم و ایده‌ها رو به تجربه‌های کاربردی تبدیل کنم. این سایت هم بخشی از مسیر یادگیری و نمونه‌کارهای منه.</p><ul class="check-list"><li>تمرکز روی کدنویسی ساده و قابل‌فهم</li><li>توجه به طراحی واکنش‌گرا و تجربه کاربری</li><li>علاقه‌مند به یادگیری و توسعه پروژه‌های جدید</li></ul></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head"><div><div class="kicker">LET'S TALK / ارتباط با من</div><h2>ایده‌ای داری؟ با هم شروع کنیم.</h2></div><p class="section-desc">برای پیشنهاد همکاری یا صحبت درباره یک ایده، از راه‌های زیر پیام بده.</p></div>
+  <div class="contact-wrap">
+    <div class="contact-card"><h3>در ارتباط باشیم</h3><p>برای ارتباط مستقیم، تلگرام بهترین راهه. روی دکمه بزن تا وارد صفحه تلگرام من بشی.</p><div class="contact-item"><span class="ci">✈</span><div><small>Telegram</small><strong>@Mr_Iliya_Solo</strong></div></div><div class="contact-links"><a class="btn btn-primary" href="https://t.me/Mr_Iliya_Solo" target="_blank" rel="noopener">پیام در تلگرام ↗</a><button class="btn btn-secondary" id="copyTelegram" type="button">کپی آیدی</button></div></div>
+    <div class="contact-card"><h3>ثبت درخواست پروژه</h3><p>اطلاعات اولیه رو وارد کن تا متن درخواست آماده بشه و بتونی در تلگرام ارسالش کنی.</p><form id="quickForm" class="form-grid"><div><label for="qname">اسم شما</label><input id="qname" name="name" placeholder="مثلاً علی" required></div><div><label for="qproject">موضوع پروژه</label><input id="qproject" name="project" placeholder="مثلاً طراحی صفحه وب" required></div><div><label for="qdesc">توضیحات کوتاه</label><textarea id="qdesc" name="description" placeholder="کمی درباره ایده‌ات توضیح بده..."></textarea></div><button class="btn btn-primary" type="submit">آماده‌سازی درخواست در تلگرام ↗</button><p class="form-hint">این فرم اطلاعات را در سایت ذخیره نمی‌کند؛ متن درخواست را برای ارسال در تلگرام آماده می‌کند.</p></form></div>
+  </div>
+</section>
+
+<section id="profile" hidden>
+  <div class="section-head"><div><div class="kicker">ACCOUNT SETTINGS / تنظیمات حساب</div><h2>پروفایل</h2></div></div>
+  <div class="contact-wrap">
+    <div class="contact-card"><h3>تم سایت</h3><p>حالت روشن یا تاریک سایت را انتخاب کن.</p><button class="btn btn-secondary" id="profileThemeToggle" type="button">تغییر تم</button></div>
+    <div class="contact-card"><h3>تغییر رمز عبور</h3><form id="profilePasswordForm" class="form-grid"><div><label for="profileNewPassword">رمز عبور جدید</label><input id="profileNewPassword" type="password" minlength="6" autocomplete="new-password" placeholder="حداقل ۶ کاراکتر" required></div><div><label for="profileConfirmPassword">تکرار رمز عبور جدید</label><input id="profileConfirmPassword" type="password" minlength="6" autocomplete="new-password" placeholder="رمز عبور را دوباره وارد کن" required></div><button class="btn btn-primary" type="submit">ذخیره رمز جدید</button></form></div>
+    <div class="contact-card"><h3>حساب کاربری</h3><p>از حساب فعلی خود خارج شو.</p><button class="btn btn-secondary" id="profileLogout" type="button">خروج از حساب کاربری</button></div>
+  </div>
+</section>
+
+<section id="register" hidden>
+  <div class="section-head"><div><div class="kicker">NEW PROJECT / ثبت پروژه</div><h2>پروژه‌ات رو ثبت کن</h2></div><p class="section-desc">درخواستت مستقیماً از طریق چت آنلاین سایت برای مدیر ارسال می‌شود.</p></div>
+  <div class="contact-wrap"><div class="contact-card"><h3>ثبت درخواست پروژه جدید</h3><p>عنوان و توضیحات پروژه را بنویس. قیمت اختیاری است؛ پس از ثبت، درخواست در گفت‌وگوی آنلاین سایت ارسال می‌شود.</p>
+    <form id="projectChatForm" class="form-grid">
+      <div><label for="projectTitle">عنوان پروژه</label><input id="projectTitle" name="title" maxlength="150" placeholder="مثلاً طراحی سایت فروشگاهی" required></div>
+      <div><label for="projectDescription">توضیحات</label><textarea id="projectDescription" name="description" rows="5" maxlength="5000" placeholder="نیازمندی‌ها و جزئیات پروژه را توضیح بده..." required></textarea></div>
+      <div><label for="projectPrice">قیمت (اختیاری)</label><input id="projectPrice" name="price" maxlength="100" placeholder="مثلاً ۲ میلیون تومان یا توافقی"></div>
+      <button class="btn btn-primary" type="submit">ارسال درخواست</button>
+      <p class="form-hint">برای ارسال و پیگیری درخواست، ابتدا باید وارد حساب کاربری‌ات شوی.</p>
+    </form>
+  </div></div>
+</section>
+
+<section id="library" hidden>
+  <div class="section-head"><div><div class="kicker">LIBRARY / کتابخانه</div><h2>کتابخانه کدهای آماده</h2></div><p class="section-desc">نمونه‌کدهای کوتاه و آماده از چند زبان برنامه‌نویسی؛ می‌تونی کدها رو ببینی، کپی کنی و برای تمرین تغییرشون بدی.</p></div>
+  <div class="projects-grid">
+    <article class="project-card"><div class="project-visual"><span class="project-label">Python</span><span class="visual-icon">Py</span></div><div class="project-body"><h3>چاپ عددهای زوج</h3><p>از یک لیست، فقط عددهای زوج را چاپ می‌کند.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">numbers = [1, 2, 3, 4, 5, 6]
+for number in numbers:
+    if number % 2 == 0:
+        print(number)</pre><div class="tags"><span>Python</span><span>حلقه و شرط</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">HTML</span><span class="visual-icon">5</span></div><div class="project-body"><h3>صفحه HTML ساده</h3><p>یک صفحه وب ساده با عنوان و متن می‌سازد.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">&lt;!DOCTYPE html&gt;
+&lt;html lang="fa"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;صفحه من&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;سلام دنیا!&lt;/h1&gt;
+  &lt;p&gt;اولین صفحه من&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre><div class="tags"><span>HTML</span><span>ساختار وب</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">CSS</span><span class="visual-icon">#</span></div><div class="project-body"><h3>کارت با ظاهر زیبا</h3><p>ظاهر یک کارت را با رنگ، فاصله و گوشه‌های گرد تنظیم می‌کند.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">.card {
+  background: #101a2d;
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 320px;
+}</pre><div class="tags"><span>CSS</span><span>طراحی</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">JavaScript</span><span class="visual-icon">JS</span></div><div class="project-body"><h3>نمایش پیام</h3><p>با کلیک روی دکمه، یک پیام در مرورگر نشان می‌دهد.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">&lt;button onclick="sayHello()"&gt;کلیک کن&lt;/button&gt;
+&lt;script&gt;
+function sayHello() {
+  alert("سلام از IliyaCode!");
+}
+&lt;/script&gt;</pre><div class="tags"><span>JavaScript</span><span>تعامل</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">C#</span><span class="visual-icon">C#</span></div><div class="project-body"><h3>چاپ پیام در C#</h3><p>یک پیام ساده در خروجی برنامه نمایش می‌دهد.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">using System;
+
+Console.WriteLine("Hello, IliyaCode!");</pre><div class="tags"><span>C#</span><span>مبتدی</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">Java</span><span class="visual-icon">J</span></div><div class="project-body"><h3>چاپ پیام در Java</h3><p>نمونه برنامه ابتدایی جاوا برای چاپ متن.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, IliyaCode!");
+    }
+}</pre><div class="tags"><span>Java</span><span>مبتدی</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">C++</span><span class="visual-icon">++</span></div><div class="project-body"><h3>چاپ پیام در C++</h3><p>متنی ساده را در خروجی برنامه چاپ می‌کند.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, IliyaCode!";
+    return 0;
+}</pre><div class="tags"><span>C++</span><span>مبتدی</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">SQL</span><span class="visual-icon">DB</span></div><div class="project-body"><h3>نمایش اطلاعات جدول</h3><p>تمام رکوردهای جدول users را انتخاب می‌کند.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">SELECT *
+FROM users;</pre><div class="tags"><span>SQL</span><span>پایگاه داده</span></div></div></article>
+    <article class="project-card"><div class="project-visual"><span class="project-label">PHP</span><span class="visual-icon">PHP</span></div><div class="project-body"><h3>نمایش نام در PHP</h3><p>یک متغیر را در خروجی صفحه نمایش می‌دهد.</p><pre dir="ltr" style="white-space:pre-wrap;overflow-wrap:anywhere;background:#080d1b;padding:14px;border-radius:12px;border:1px solid var(--line)">&lt;?php
+$name = "IliyaCode";
+echo "Hello, " . $name . "!";
+?&gt;</pre><div class="tags"><span>PHP</span><span>مبتدی</span></div></div></article>
+  </div>
+</section>
+</main>
+<footer><div class="footer-inner"><span>© <span id="year"></span> IliyaCode — ساخته‌شده با علاقه به کدنویسی</span><a href="#home">بازگشت به بالا ↑</a></div></footer>
+</div>
+
+<nav class="bottom-nav" aria-label="منوی اصلی پایین صفحه">
+  <button class="nav-link active" type="button" data-page="library" style="border:0;background:transparent;cursor:pointer"><span class="nav-icon">▤</span><span>کتابخانه</span></button>
+  <button class="nav-link" type="button" data-page="register" style="border:0;background:transparent;cursor:pointer"><span class="nav-icon">＋</span><span>ثبت پروژه</span></button>
+  <button class="nav-link" type="button" data-page="projects" style="border:0;background:transparent;cursor:pointer"><span class="nav-icon">▦</span><span>پروژه‌های من</span></button>
+  <button class="nav-link" type="button" data-page="profile" style="border:0;background:transparent;cursor:pointer"><span class="nav-icon">◎</span><span>پروفایل</span></button>
+</nav>
+
+<div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head"><h3 id="modalTitle">ثبت درخواست پروژه</h3><button class="close-btn" type="button" id="closeModal" aria-label="بستن">✕</button></div>
+    <p>اطلاعات اولیه رو بنویس؛ بعد یک پیام آماده در تلگرام باز می‌شه تا خودت بررسی و ارسالش کنی.</p>
+    <form id="modalForm" class="form-grid">
+      <div><label for="mname">اسم شما</label><input id="mname" name="name" placeholder="اسم شما" required></div>
+      <div><label for="mproject">موضوع پروژه</label><input id="mproject" name="project" placeholder="مثلاً طراحی سایت" required></div>
+      <div><label for="mbudget">بودجه تقریبی (اختیاری)</label><select id="mbudget" name="budget"><option value="مشخص نشده">فعلاً مشخص نیست</option><option>کمتر از ۱ میلیون تومان</option><option>۱ تا ۳ میلیون تومان</option><option>بیشتر از ۳ میلیون تومان</option><option>توافقی</option></select></div>
+      <div><label for="mdesc">توضیحات</label><textarea id="mdesc" name="description" placeholder="چه چیزی لازم داری؟"></textarea></div>
+      <button class="btn btn-primary" type="submit">ادامه در تلگرام ↗</button>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const TG = "https://t.me/Mr_Iliya_Solo";
+const modal = document.getElementById("projectModal");
+const toast = document.getElementById("toast");
+let toastTimer;
+function showToast(message){
+  toast.textContent = message; toast.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>toast.classList.remove("show"),2400);
+}
+function openModal(){ showPage("register"); }
+function closeModal(){ modal.classList.remove("open"); document.body.style.overflow=""; }
+document.querySelectorAll("[data-open-project]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();showPage("register");}));
+document.getElementById("closeModal").addEventListener("click",closeModal);
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+function sendTelegram(form, includeBudget=false){
+  const data = new FormData(form);
+  const name = (data.get("name")||"").toString().trim();
+  const project = (data.get("project")||"").toString().trim();
+  const description = (data.get("description")||"").toString().trim();
+  const budget = (data.get("budget")||"").toString();
+  if(!name || !project){showToast("لطفاً اسم و موضوع پروژه رو وارد کن.");return;}
+  let message = "سلام ایلیا! می‌خواستم درباره یک پروژه صحبت کنم.%0A%0A";
+  message += "نام: " + encodeURIComponent(name) + "%0A";
+  message += "موضوع: " + encodeURIComponent(project) + "%0A";
+  if(includeBudget) message += "بودجه: " + encodeURIComponent(budget) + "%0A";
+  if(description) message += "توضیحات: " + encodeURIComponent(description);
+  window.open(TG + "?text=" + message, "_blank", "noopener");
+  if(includeBudget) closeModal();
+}
+document.getElementById("modalForm")?.addEventListener("submit",e=>{e.preventDefault();showPage("register");});
+document.getElementById("quickForm")?.addEventListener("submit",e=>{e.preventDefault();showPage("register");});
+document.getElementById("copyTelegram").addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText("@Mr_Iliya_Solo");showToast("آیدی تلگرام کپی شد.");}
+  catch(e){showToast("آیدی تلگرام: @Mr_Iliya_Solo");}
+});
+document.getElementById("year").textContent = new Date().getFullYear();
+// فقط ناوبری پایین به نمای جداگانه تبدیل شده؛ محتوای قبلی و قابلیت‌های دیگر حفظ شده‌اند.
+const bottomLinks = [...document.querySelectorAll(".bottom-nav [data-page]")];
+const mainElement = document.querySelector("main");
+const allSections = [...mainElement.querySelectorAll(":scope > section")];
+const pageSections = {profile: document.getElementById("profile"), register: document.getElementById("register"), projects: document.getElementById("projects"), library: document.getElementById("library")};
+function showPage(page){
+  closeModal();
+  allSections.forEach(section=>{section.hidden = true;});
+  Object.values(pageSections).forEach(section=>{if(section) section.hidden = true;});
+  if(pageSections[page]) pageSections[page].hidden = false;
+  bottomLinks.forEach(a=>a.classList.toggle("active",a.dataset.page===page));
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(page === "projects") loadCustomerProjects();
+}
+bottomLinks.forEach(link=>link.addEventListener("click",()=>showPage(link.dataset.page)));
+// نمایش پروژه‌ها از ساختار فعلی حفظ شده؛ اتصال کامل فهرست به جدول Supabase به تنظیم جدول پروژه‌ها نیاز دارد.
+function loadCustomerProjects(){ window.dispatchEvent(new CustomEvent("iliya:load-approved-projects")); }
+allSections.forEach(section=>{section.hidden = true;});
+Object.values(pageSections).forEach(section=>{if(section) section.hidden = true;});
+pageSections.library.hidden = false;
+document.querySelectorAll("[data-open-project]").forEach(el=>el.addEventListener("click",openModal));
+
+</script>
+
+<style>
+#supportLauncher{position:fixed;left:18px;bottom:88px;z-index:9998;border:0;border-radius:999px;padding:14px 18px;background:linear-gradient(120deg,#5a8cff,#54e4d2);color:#061124;font-weight:900;box-shadow:0 12px 35px #0008;cursor:pointer}
+#supportPanel{position:fixed;left:16px;bottom:145px;z-index:9999;width:min(410px,calc(100vw - 28px));max-height:min(78vh,700px);display:none;flex-direction:column;background:#0e1729;border:1px solid #ffffff24;border-radius:20px;box-shadow:0 22px 80px #000b;overflow:hidden;color:#f3f7ff;font-family:inherit}
+#supportPanel.open{display:flex}.sp-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#14223a;border-bottom:1px solid #ffffff18}.sp-head strong{font-size:15px}.sp-head button,.sp-iconbtn{background:transparent;border:0;color:inherit;font-size:20px;cursor:pointer}.sp-body{padding:14px;overflow:auto;min-height:170px}.sp-tabs{display:flex;gap:8px;margin-bottom:12px}.sp-tabs button,.sp-btn{border:1px solid #ffffff24;border-radius:10px;padding:8px 11px;background:#ffffff0a;color:#f3f7ff;cursor:pointer}.sp-tabs button.active,.sp-btn.primary{background:#5a8cff;color:#07111f;border-color:transparent;font-weight:800}.sp-field{display:block;width:100%;margin:7px 0 10px;padding:10px 11px;border-radius:10px;border:1px solid #ffffff25;background:#081120;color:#fff;box-sizing:border-box}.sp-field::placeholder{color:#9cabc4}.sp-label{font-size:12px;color:#a5b2ca}.sp-row{display:flex;gap:8px}.sp-row>*{flex:1;min-width:0}.sp-muted{font-size:12px;color:#a5b2ca}.sp-list{display:grid;gap:8px}.sp-item{width:100%;text-align:right;border:1px solid #ffffff1a;border-radius:12px;background:#ffffff07;padding:10px;color:#fff;cursor:pointer}.sp-item small{display:block;color:#a5b2ca}.sp-msgs{display:flex;flex-direction:column;gap:8px;max-height:260px;overflow:auto;margin:10px 0;padding:3px}.sp-msg{max-width:88%;padding:9px 11px;border-radius:12px;background:#1a2942;overflow-wrap:anywhere}.sp-msg.mine{align-self:flex-start;background:#214d72}.sp-msg small{display:block;font-size:10px;color:#b7c5da;margin-top:4px}.sp-alert{padding:9px 10px;border-radius:10px;background:#ffffff0b;font-size:12px;margin-bottom:10px}.sp-hidden{display:none!important}
+</style>
+<button id="supportLauncher" type="button" aria-expanded="false">💬 پشتیبانی آنلاین</button>
+<section id="supportPanel" aria-label="چت آنلاین و درخواست‌ها" aria-live="polite">
+ <header class="sp-head"><strong>پشتیبانی IliyaCode</strong><button id="spClose" aria-label="بستن">×</button></header>
+ <div class="sp-body" id="spBody"><div class="sp-alert">برای گفت‌وگوی آنلاین و مشاهده درخواست‌ها وارد حساب شوید یا حساب جدید بسازید.</div><div class="sp-tabs"><button class="active" data-view="login">ورود</button><button data-view="signup">ثبت‌نام</button></div>
+ <form id="spAuth"><label class="sp-label" for="spEmail">ایمیل</label><input class="sp-field" id="spEmail" type="email" autocomplete="email" required placeholder="you@example.com"><label class="sp-label" for="spPassword">رمز عبور (حداقل ۶ کاراکتر)</label><input class="sp-field" id="spPassword" type="password" minlength="6" autocomplete="current-password" required placeholder="رمز عبور"><button class="sp-btn primary" id="spAuthSubmit" type="submit">ورود</button></form><p class="sp-muted">پس از ثبت‌نام ممکن است لازم باشد ایمیل خود را تأیید کنید.</p></div>
+</section>
+<script type="module">
+// راه‌اندازی: این دو مقدار را از Supabase > Project Settings > API بردار.
+const SUPABASE_URL = "https://cvaraqyabfnsggykwsvm.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_QTyt-qU_7uLtrIoswiuEww_EjNT89Sg";
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const launcher=document.getElementById('supportLauncher'), panel=document.getElementById('supportPanel'), body=document.getElementById('spBody');
+let sb=null, currentUser=null, userRole='customer', view='login', activeTicket=null, channel=null, refreshTimer=null, pendingProjectRequest=null, sendingProjectRequest=false;
+launcher.addEventListener('click',()=>{panel.classList.toggle('open');launcher.setAttribute('aria-expanded',String(panel.classList.contains('open')));});
+document.getElementById('spClose').addEventListener('click',()=>{panel.classList.remove('open');launcher.setAttribute('aria-expanded','false');});
+function openSupportPanel(){panel.classList.add('open');launcher.setAttribute('aria-expanded','true');}
+function updateRegisterCta(){
+ const cta=document.getElementById('registerCta');
+ if(!cta)return;
+ cta.innerHTML=currentUser?'خروج از حساب کاربری':'ثبت نام <span>↗</span>';
+ cta.href=currentUser?'#logout':'#signup';
+}
+document.getElementById('registerCta')?.addEventListener('click',async e=>{
+ e.preventDefault();
+ if(currentUser){
+  if(!sb)return;
+  const {error}=await sb.auth.signOut();
+  if(error){showToast('خروج ناموفق بود: '+sayError(error));return;}
+  currentUser=null;userRole='customer';activeTicket=null;updateRegisterCta();
+  openSupportPanel();renderAuth();showToast('از حساب کاربری خارج شدی.');
+ }else{
+  openSupportPanel();view='signup';renderAuth();
+ }
+});
+function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function alertBox(t){return `<div class="sp-alert">${esc(t)}</div>`;}
+function sayError(e){return e?.message||'خطایی رخ داد؛ تنظیمات و اتصال را بررسی کن.';}
+function renderProjectsEmpty(message='هنوز پروژه‌ای ثبت نکرده‌ای', detail='بعد از ارسال درخواست پروژه، اینجا می‌توانی آن را ببینی و وضعیتش را پیگیری کنی.'){
+ const list=document.getElementById('customerProjectsList');
+ if(list) list.innerHTML=`<div class="projects-empty"><span class="empty-icon">▦</span><h3>${esc(message)}</h3><p>${esc(detail)}</p></div>`;
+}
+async function loadApprovedProjects(){
+ const list=document.getElementById('customerProjectsList');
+ if(!list)return;
+ if(!currentUser){renderProjectsEmpty('برای مشاهده پروژه‌ها وارد حساب شو','از بخش پشتیبانی آنلاین وارد حساب کاربری‌ات شو تا درخواست‌های ثبت‌شده‌ات نمایش داده شوند.');return;}
+ if(!sb){renderProjectsEmpty('اتصال برقرار نیست','لطفاً اتصال Supabase را بررسی کن.');return;}
+ list.innerHTML='<div class="projects-empty"><span class="empty-icon">◌</span><h3>در حال بارگذاری پروژه‌ها...</h3><p>لطفاً کمی صبر کن.</p></div>';
+ try{
+  const {data,error}=await sb.from('projects').select('id,title,description,price,status,created_at').eq('user_id',currentUser.id).order('created_at',{ascending:false});
+  if(error)throw error;
+  const projects=data||[];
+  if(!projects.length){renderProjectsEmpty();return;}
+  const statusInfo={pending:{label:'در انتظار بررسی',icon:'◷'},approved:{label:'تأیید شده',icon:'✓'},rejected:{label:'رد شده',icon:'×'},in_progress:{label:'در حال انجام',icon:'⚙'},completed:{label:'تکمیل شده',icon:'✓'}};
+  list.innerHTML=projects.map(project=>{const st=statusInfo[project.status]||{label:project.status||'در انتظار بررسی',icon:'◷'};return `<article class="project-card"><div class="project-visual"><span class="project-label">${esc(st.label)}</span><span class="visual-icon">${esc(st.icon)}</span></div><div class="project-body"><h3>${esc(project.title||'پروژه بدون عنوان')}</h3><p>${esc(project.description||'توضیحی برای این پروژه ثبت نشده است.')}</p>${project.price?`<p style="margin-top:8px;min-height:0">قیمت: ${esc(project.price)}</p>`:''}<span class="project-status">وضعیت: ${esc(st.label)}</span><p style="margin-top:8px;min-height:0">تاریخ ثبت: ${project.created_at?new Date(project.created_at).toLocaleDateString('fa-IR'):'-'}</p></div></article>`;}).join('');
+ }catch(error){
+  console.error('Failed to load customer projects:',error);
+  renderProjectsEmpty('بارگذاری پروژه‌ها ناموفق بود',sayError(error));
+ }
+}
+window.addEventListener('iliya:load-approved-projects',loadApprovedProjects);
+
+const projectChatForm=document.getElementById('projectChatForm');
+if(projectChatForm){projectChatForm.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(projectChatForm);pendingProjectRequest={title:String(f.get('title')||'').trim(),description:String(f.get('description')||'').trim(),price:String(f.get('price')||'').trim()};if(!pendingProjectRequest.title||!pendingProjectRequest.description){return;}openSupportPanel();if(!sb){body.insertAdjacentHTML('afterbegin',alertBox('اتصال Supabase تنظیم نشده است؛ ابتدا تنظیمات اتصال را کامل کن.'));return;}if(!currentUser){showToast('برای ارسال درخواست، از پنجره چت آنلاین وارد حساب شو.');return;}await sendPendingProjectRequest();});}
+async function sendPendingProjectRequest(){
+ if(!pendingProjectRequest||!currentUser||!sb||sendingProjectRequest)return;
+ sendingProjectRequest=true;
+ const request=pendingProjectRequest;
+ const c=body.querySelector('#spContent');
+ if(c)c.insertAdjacentHTML('afterbegin',alertBox('در حال ذخیره و ارسال درخواست پروژه...'));
+ let savedProject=null;
+ try{
+  // ابتدا درخواست را به صورت pending در جدول projects ذخیره می‌کنیم تا از دست نرود.
+  const {data:project,error:projectError}=await sb.from('projects').insert({
+   user_id:currentUser.id,
+   title:request.title,
+   description:request.description,
+   price:request.price||null,
+   status:'pending'
+  }).select('id,title,description,price,status,created_at').single();
+  if(projectError)throw projectError;
+  savedProject=project;
+  pendingProjectRequest=null;
+  projectChatForm.reset();
+  await loadApprovedProjects();
+
+  const subject=('ثبت پروژه: '+request.title).slice(0,120);
+  const {data:ticket,error:ticketError}=await sb.from('support_tickets').insert({user_id:currentUser.id,subject,kind:'chat',status:'open'}).select().single();
+  if(ticketError)throw new Error('پروژه ذخیره شد اما ساخت گفت‌وگوی پشتیبانی ناموفق بود: '+sayError(ticketError));
+  const message='درخواست پروژه جدید\n\nعنوان پروژه: '+request.title+'\n\nتوضیحات: '+request.description+'\n\nقیمت: '+(request.price||'اعلام نشده')+'\n\nشناسه درخواست: '+savedProject.id+'\nوضعیت: در انتظار بررسی مدیر';
+  const {error:messageError}=await sb.from('support_messages').insert({ticket_id:ticket.id,sender_id:currentUser.id,body:message});
+  if(messageError)throw new Error('پروژه ذخیره شد اما ارسال پیام به چت ناموفق بود: '+sayError(messageError));
+  await loadApprovedProjects();
+  openSupportPanel();
+  await openTicket(ticket);
+  showToast('درخواست ذخیره و برای مدیر ارسال شد؛ وضعیت آن در «پروژه‌های من» قابل مشاهده است.');
+ }catch(err){
+  const content=body.querySelector('#spContent')||body;
+  content.insertAdjacentHTML('afterbegin',alertBox((savedProject?'درخواست پروژه ذخیره شده اما بخشی از ارسال کامل نشد: ':'ارسال درخواست ناموفق بود: ')+sayError(err)));
+ }finally{sendingProjectRequest=false;}
+}
+function renderAuth(){body.innerHTML=`${alertBox('برای گفت‌وگوی آنلاین و مشاهده درخواست‌ها وارد حساب شوید یا حساب جدید بسازید.')}<div class="sp-tabs"><button class="${view==='login'?'active':''}" data-view="login">ورود</button><button class="${view==='signup'?'active':''}" data-view="signup">ثبت‌نام</button></div><form id="spAuth"><label class="sp-label">ایمیل</label><input class="sp-field" id="spEmail" type="email" required autocomplete="email" placeholder="you@example.com"><label class="sp-label">رمز عبور (حداقل ۶ کاراکتر)</label><input class="sp-field" id="spPassword" type="password" minlength="6" required autocomplete="${view==='signup'?'new-password':'current-password'}" placeholder="رمز عبور"><button class="sp-btn primary" type="submit">${view==='signup'?'ساخت حساب':'ورود'}</button></form><p class="sp-muted">برای ثبت‌نام ممکن است تأیید ایمیل لازم باشد.</p>`;body.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=b.dataset.view;renderAuth();});
+ body.querySelector('#spAuth').onsubmit=async e=>{e.preventDefault();const email=body.querySelector('#spEmail').value.trim(),password=body.querySelector('#spPassword').value;const btn=e.submitter;btn.disabled=true;try{if(!sb)throw new Error('ابتدا آدرس پروژه و کلید عمومی Supabase را در فایل وارد کن.');let result=view==='signup'?await sb.auth.signUp({email,password}):await sb.auth.signInWithPassword({email,password});if(result.error)throw result.error;if(view==='signup'&&!result.data.session){body.innerHTML=alertBox('حساب ساخته شد. ایمیل را تأیید کن و سپس وارد شو.');return;}await loadApp();}catch(err){body.insertAdjacentHTML('afterbegin',alertBox(sayError(err)));}finally{btn.disabled=false;}};}
+function showConfigError(){body.innerHTML=alertBox('برای فعال‌شدن سیستم، ابتدا Supabase را بساز، فایل SQL همراه را در SQL Editor اجرا کن و URL و anon key پروژه را در ابتدای اسکریپت وارد کن.');}
+async function loadApp(){const {data:{user},error}=await sb.auth.getUser();if(error||!user){currentUser=null;userRole='customer';updateRegisterCta();renderAuth();return;}currentUser=user;updateRegisterCta();const {data:profile,error:pe}=await sb.from('profiles').select('role').eq('id',user.id).single();if(pe)throw pe;userRole=profile?.role||'customer';renderDashboard();loadApprovedProjects();if(pendingProjectRequest){openSupportPanel();await sendPendingProjectRequest();}}
+function renderDashboard(){activeTicket=null;body.innerHTML=`<div class="sp-row" style="align-items:center;margin-bottom:12px"><div><b>${userRole==='admin'?'پنل مدیریت':'حساب مشتری'}</b><div class="sp-muted">${esc(currentUser.email)}</div></div><button id="spLogout" class="sp-btn">خروج</button></div><div class="sp-tabs"><button class="active" id="spChatNew">چت آنلاین</button><button id="spMyTickets">همه درخواست‌ها</button>${userRole==='admin'?'<button id="spManageProjects">مدیریت پروژه‌ها</button>':''}</div><div id="spContent"></div>`;body.querySelector('#spLogout').onclick=async()=>{const {error}=await sb.auth.signOut();if(error){body.insertAdjacentHTML('afterbegin',alertBox(sayError(error)));return;}currentUser=null;userRole='customer';updateRegisterCta();renderAuth();};body.querySelector('#spChatNew').onclick=()=>newTicket();body.querySelector('#spMyTickets').onclick=()=>listTickets();const manage=body.querySelector('#spManageProjects');if(manage)manage.onclick=()=>loadAdminProjects();newTicket();}
+async function loadAdminProjects(){if(userRole!=='admin'){return;}const c=body.querySelector('#spContent');if(!c)return;c.innerHTML='<p class="sp-muted">در حال بارگذاری پروژه‌ها...</p>';try{const {data,error}=await sb.from('projects').select('id,user_id,title,description,price,status,created_at').order('created_at',{ascending:false}).limit(100);if(error)throw error;const projects=data||[];const labels={pending:'در انتظار بررسی',approved:'تأیید شده',rejected:'رد شده',in_progress:'در حال انجام',completed:'تکمیل شده'};if(!projects.length){c.innerHTML='<p class="sp-muted">هنوز هیچ پروژه‌ای ثبت نشده است.</p>';return;}c.innerHTML=projects.map(p=>`<article class="sp-item" style="display:block;margin-bottom:10px;cursor:default"><b>${esc(p.title||'پروژه بدون عنوان')}</b><p style="white-space:pre-wrap;margin:8px 0">${esc(p.description||'بدون توضیحات')}</p><small>شناسه مشتری: ${esc(p.user_id||'-')} · ${p.created_at?new Date(p.created_at).toLocaleString('fa-IR'):''}</small>${p.price?`<p class="sp-muted">قیمت پیشنهادی: ${esc(p.price)}</p>`:''}<label class="sp-label" for="project-status-${p.id}">وضعیت پروژه</label><select class="sp-field" id="project-status-${p.id}" data-project-status="${p.id}"><option value="pending" ${p.status==='pending'?'selected':''}>در انتظار بررسی</option><option value="approved" ${p.status==='approved'?'selected':''}>تأیید شده</option><option value="rejected" ${p.status==='rejected'?'selected':''}>رد شده</option><option value="in_progress" ${p.status==='in_progress'?'selected':''}>در حال انجام</option><option value="completed" ${p.status==='completed'?'selected':''}>تکمیل شده</option></select><button class="sp-btn primary" type="button" data-save-project="${p.id}" style="margin-top:8px">ذخیره وضعیت</button></article>`).join('');c.querySelectorAll('[data-save-project]').forEach(btn=>btn.onclick=async()=>{const id=btn.dataset.saveProject;const select=c.querySelector(`[data-project-status="${id}"]`);const status=select?.value;if(!status)return;btn.disabled=true;btn.textContent='در حال ذخیره...';try{const {error:updateError}=await sb.from('projects').update({status}).eq('id',id);if(updateError)throw updateError;showToast('وضعیت پروژه به «'+(labels[status]||status)+'» تغییر کرد.');await loadAdminProjects();}catch(err){c.insertAdjacentHTML('afterbegin',alertBox('تغییر وضعیت ناموفق بود: '+sayError(err)));btn.disabled=false;btn.textContent='ذخیره وضعیت';}});}catch(err){c.innerHTML=alertBox('بارگذاری پروژه‌ها ناموفق بود: '+sayError(err));}}
+function newTicket(){activeTicket=null;const c=body.querySelector('#spContent');c.innerHTML=`<h4 style="margin:5px 0 8px">شروع گفت‌وگوی آنلاین</h4><form id="spNewTicket"><label class="sp-label">موضوع</label><input class="sp-field" name="subject" required maxlength="120" placeholder="سوال یا موضوع گفت‌وگو" value="گفت‌وگوی آنلاین"><label class="sp-label">پیام شما</label><textarea class="sp-field" name="message" required maxlength="5000" rows="3" placeholder="پیامت رو بنویس..."></textarea><button class="sp-btn primary" type="submit">شروع چت</button></form>`;c.querySelector('form').onsubmit=async e=>{e.preventDefault();const f=new FormData(e.currentTarget),subject=String(f.get('subject')).trim(),message=String(f.get('message')).trim();try{const {data:t,error}=await sb.from('support_tickets').insert({user_id:currentUser.id,subject,kind:'chat',status:'open'}).select().single();if(error)throw error;const {error:me}=await sb.from('support_messages').insert({ticket_id:t.id,sender_id:currentUser.id,body:message});if(me)throw me;openTicket(t);}catch(err){c.insertAdjacentHTML('afterbegin',alertBox(sayError(err)));}};}
+async function listTickets(){const c=body.querySelector('#spContent');c.innerHTML='در حال بارگذاری...';try{let q=sb.from('support_tickets').select('*').order('updated_at',{ascending:false});if(userRole!=='admin')q=q.eq('user_id',currentUser.id);const {data,error}=await q.limit(50);if(error)throw error;c.innerHTML=`<div class="sp-list">${(data||[]).map(t=>`<button class="sp-item" data-id="${t.id}"><b>${esc(t.subject)}</b><small>گفت‌وگو · ${t.status==='closed'?'بسته':'باز'} · ${new Date(t.updated_at).toLocaleString('fa-IR')}</small></button>`).join('')||'<p class="sp-muted">هنوز درخواستی ثبت نشده است.</p>'}</div>`;c.querySelectorAll('[data-id]').forEach(b=>b.addEventListener('click',()=>openTicket(data.find(t=>t.id===b.dataset.id))));}catch(err){c.innerHTML=alertBox(sayError(err));}}
+async function openTicket(ticket){activeTicket=ticket;const c=body.querySelector('#spContent');c.innerHTML=`<button class="sp-btn" id="spBack">← بازگشت</button><h4 style="margin:8px 0">${esc(ticket.subject)}</h4><div class="sp-muted">${ticket.status==='closed'?'این درخواست بسته شده است.':'درخواست باز'}</div><div class="sp-msgs" id="spMessages">در حال بارگذاری پیام‌ها...</div><form id="spSend"><textarea class="sp-field" name="body" rows="2" required maxlength="5000" placeholder="پاسخ خود را بنویس..." ${ticket.status==='closed'?'disabled':''}></textarea><div class="sp-row"><button class="sp-btn primary" type="submit" ${ticket.status==='closed'?'disabled':''}>ارسال پیام</button>${userRole==='admin'&&ticket.status!=='closed'?'<button class="sp-btn" type="button" id="spCloseTicket">بستن درخواست</button>':''}</div></form>`;c.querySelector('#spBack').onclick=()=>listTickets();await loadMessages();if(channel)await sb.removeChannel(channel);channel=sb.channel('support-'+ticket.id).on('postgres_changes',{event:'INSERT',schema:'public',table:'support_messages',filter:'ticket_id=eq.'+ticket.id},()=>loadMessages()).subscribe();c.querySelector('#spSend').onsubmit=async e=>{e.preventDefault();const input=e.currentTarget.elements.body,txt=input.value.trim();if(!txt)return;try{const {error}=await sb.from('support_messages').insert({ticket_id:ticket.id,sender_id:currentUser.id,body:txt});if(error)throw error;input.value='';await sb.from('support_tickets').update({updated_at:new Date().toISOString()}).eq('id',ticket.id);}catch(err){c.insertAdjacentHTML('afterbegin',alertBox(sayError(err)));}};const close=c.querySelector('#spCloseTicket');if(close)close.onclick=async()=>{const {error}=await sb.from('support_tickets').update({status:'closed',updated_at:new Date().toISOString()}).eq('id',ticket.id);if(error)c.insertAdjacentHTML('afterbegin',alertBox(sayError(error)));else openTicket({...ticket,status:'closed'});};}
+async function loadMessages(){if(!activeTicket)return;const box=body.querySelector('#spMessages');if(!box)return;const {data,error}=await sb.from('support_messages').select('id,sender_id,body,created_at').eq('ticket_id',activeTicket.id).order('created_at',{ascending:true}).limit(200);if(error){box.innerHTML=alertBox(sayError(error));return;}box.innerHTML=(data||[]).map(m=>`<div class="sp-msg ${m.sender_id===currentUser.id?'mine':''}">${esc(m.body)}<small>${m.sender_id===currentUser.id?'شما':(userRole==='admin'?'مشتری':'پشتیبانی')} · ${new Date(m.created_at).toLocaleString('fa-IR')}</small></div>`).join('')||'<span class="sp-muted">هنوز پیامی نیست.</span>';box.scrollTop=box.scrollHeight;}
+// تنظیمات پروفایل: تم، تغییر رمز عبور و خروج از حساب
+const profileThemeToggle=document.getElementById('profileThemeToggle');
+function applyProfileTheme(light){
+ document.documentElement.classList.toggle('light-theme',light);
+ if(profileThemeToggle)profileThemeToggle.textContent=light?'فعال‌کردن تم تاریک':'فعال‌کردن تم روشن';
+}
+applyProfileTheme(false);
+profileThemeToggle?.addEventListener('click',()=>applyProfileTheme(!document.documentElement.classList.contains('light-theme')));
+document.getElementById('profileLogout')?.addEventListener('click',async()=>{
+ if(!sb||!currentUser){showToast('ابتدا وارد حساب کاربری شو.');return;}
+ const {error}=await sb.auth.signOut();
+ if(error){showToast('خروج ناموفق بود: '+sayError(error));return;}
+ currentUser=null;userRole='customer';updateRegisterCta();showToast('از حساب کاربری خارج شدی.');renderAuth();
+});
+document.getElementById('profilePasswordForm')?.addEventListener('submit',async e=>{
+ e.preventDefault();
+ if(!sb||!currentUser){showToast('برای تغییر رمز ابتدا وارد حساب شو.');return;}
+ const password=document.getElementById('profileNewPassword').value;
+ const confirm=document.getElementById('profileConfirmPassword').value;
+ if(password.length<6){showToast('رمز عبور باید حداقل ۶ کاراکتر باشد.');return;}
+ if(password!==confirm){showToast('رمزهای عبور با هم مطابقت ندارند.');return;}
+ const button=e.currentTarget.querySelector('button[type="submit"]');button.disabled=true;
+ try{const {error}=await sb.auth.updateUser({password});if(error)throw error;e.currentTarget.reset();showToast('رمز عبور با موفقیت تغییر کرد.');}
+ catch(err){showToast('تغییر رمز ناموفق بود: '+sayError(err));}
+ finally{button.disabled=false;}
+});
+if(SUPABASE_URL.startsWith('https://')&&SUPABASE_ANON_KEY!=='YOUR_SUPABASE_ANON_KEY'){sb=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);sb.auth.onAuthStateChange((_event,session)=>{if(session?.user){setTimeout(()=>loadApp().catch(e=>{body.insertAdjacentHTML('afterbegin',alertBox(sayError(e)));}),0);}else{currentUser=null;userRole='customer';updateRegisterCta();if(!panel.classList.contains('open'))renderAuth();if(!document.getElementById('projects').hidden)loadApprovedProjects();}});sb.auth.getSession().then(({data})=>{if(data.session)loadApp().catch(e=>body.insertAdjacentHTML('afterbegin',alertBox(sayError(e))));else{updateRegisterCta();renderAuth();}});}else{showConfigError();}
+</script>
+
+</body>
+</html>
